@@ -12,10 +12,11 @@ public class simpleRequests : MonoBehaviour
     TMP_Text texto;
     [SerializeField]
     List<Persona> personas ;
+    string IDApi = "AKfycbzi-92c1o7fzG8DD8I4x96VYywp8Q1Mb8LVnj1KyGWDJuwj7g-TtaXL62nH9FVqYYY";
     void Start()
     {
         // A correct website page.
-        StartCoroutine(GetRequest("https://script.google.com/macros/s/AKfycbxAR7hng4Acm-L4kAPI38QXW7_29rnuo6TjZbHbRqICb1mkqdPZGYnTEuFRZg9K6wOL/exec"));
+        StartCoroutine(GetRequest("https://script.google.com/macros/s/"+IDApi+"/exec"));
 
         // A non-existing page.
         //StartCoroutine(GetRequest("https://error.html"));
@@ -32,35 +33,35 @@ public class simpleRequests : MonoBehaviour
 
             switch (webRequest.result)
             {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
+                //case UnityWebRequest.Result.ConnectionError:
+                //case UnityWebRequest.Result.DataProcessingError:
+                //    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                //    break;
+                //case UnityWebRequest.Result.ProtocolError:
+                //    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                //    break;
                 case UnityWebRequest.Result.Success:
                     texto.text = webRequest.downloadHandler.text;
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                    JSONNode root = JSONNode.Parse(webRequest.downloadHandler.text);
-                    foreach(var obj in root["content"]){
-                        Debug.Log(obj.Key);
-                        Persona a = ScriptableObject.CreateInstance<Persona>();
-                        foreach(var token in root["content"][obj.Key])
-                        {
-                            Debug.Log(token.Value["edad"]);
-                            a.name = obj.Key;
-                            a.nombre = obj.Key;
-                            a.edad = token.Value["edad"];
-                            a.color = token.Value["color"];
-                            a.email = token.Value["email"];
-                            a.comidas = token.Value["comidas"];
-                            AssetDatabase.CreateAsset(a, "Assets/Personas/"+a.name+".asset");
-                            personas.Add(a);
+                    //JSONNode root = JSONNode.Parse(webRequest.downloadHandler.text);
+                    //foreach(var obj in root["content"]){
+                    //    Debug.Log(obj.Key);
+                    //    Persona a = ScriptableObject.CreateInstance<Persona>();
+                    //    foreach(var token in root["content"][obj.Key])
+                    //    {
+                    //        Debug.Log(token.Value["edad"]);
+                    //        a.name = obj.Key;
+                    //        a.nombre = obj.Key;
+                    //        a.edad = token.Value["edad"];
+                    //        a.color = token.Value["color"];
+                    //        a.email = token.Value["email"];
+                    //        a.comidas = token.Value["comidas"];
+                    //        AssetDatabase.CreateAsset(a, "Assets/Personas/"+a.name+".asset");
+                    //        personas.Add(a);
                                                         
-                        }
+                    //    }
 
-                    }
+                    //}
 
                     break;
             }
