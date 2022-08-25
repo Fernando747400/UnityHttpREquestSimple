@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 using TMPro;
+//using System.Diagnostics;
 
 public class simpleRequests : MonoBehaviour
 {
@@ -47,28 +48,17 @@ public class simpleRequests : MonoBehaviour
                     //Debug.Log("EL root es el siguiente");
                     foreach (var key in root.Keys)
                     {
+                        Debug.Log(key);
                         Debug.Log(root[key][0]);
-
-                        foreach (var obj in root[key][0])
-                        {
-                            Debug.Log(obj.Key);
-                            Debug.Log(obj.Value);
-                            //    Persona a = ScriptableObject.CreateInstance<Persona>();
-                            //    foreach (var token in root["content"][obj.Key])
-                            //    {
-                            //        Debug.Log(token.Value["edad"]);
-                            //        a.name = obj.Key;
-                            //        a.nombre = obj.Key;
-                            //        a.edad = token.Value["edad"];
-                            //        a.color = token.Value["color"];
-                            //        a.email = token.Value["email"];
-                            //        a.comidas = token.Value["comidas"];
-                            //        AssetDatabase.CreateAsset(a, "Assets/Personas/" + a.name + ".asset");
-                            //        personas.Add(a);
-
-                            //    }
-
-                        }
+                        Persona a = ScriptableObject.CreateInstance<Persona>();
+                        a.name = key;
+                        a.nombre = key;
+                        a.edad = root[key][0]["edad"];
+                        a.color = root[key][0]["color"];
+                        a.email = root[key][0]["email"];
+                        a.comidas = root[key][0]["comidas"];
+                        AssetDatabase.CreateAsset(a, "Assets/Personas/" + a.name + ".asset");
+                        personas.Add(a);
                     }
                    
                     Debug.Log("Finished foreach");
