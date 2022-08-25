@@ -54,6 +54,7 @@ public class MyAPIRequest : MonoBehaviour
                         Debug.Log(root[key]);
                     }
 
+                    yield return root;
                     break;
             }
         }
