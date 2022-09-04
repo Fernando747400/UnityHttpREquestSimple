@@ -11,6 +11,9 @@ public class MyAPIRequest : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private TextMeshProUGUI _OutputText;
     [SerializeField] private string _URLToRequest;
+    [SerializeField] ActivityShower _activityShower;
+
+    private List<string[,]> activityList = new List<string[,]>();
 
     public void Start()
     {
@@ -54,6 +57,7 @@ public class MyAPIRequest : MonoBehaviour
                         Debug.Log(root[key]);
                     }
 
+                    _activityShower.DisplayActivity(root);
                     yield return root;
                     break;
             }
