@@ -62,7 +62,11 @@ public class ActivityShower : MonoBehaviour
                 break;
 
             case "link":
-                _Link.text = value;
+                if (value == "")
+                {
+                    _Link.text = "Not applicable";
+                } else _Link.text = value;
+
                 break;
 
             case "accessibility":
@@ -113,7 +117,7 @@ public class ActivityShower : MonoBehaviour
 
     public void OpenLink()
     {
-        if (_Link.text.ToString() != "")
+        if (_Link.text.ToString() != "" && _Link.text.ToString() != "Not applicable")
         {
             Application.OpenURL(_Link.text.ToString());
         } else

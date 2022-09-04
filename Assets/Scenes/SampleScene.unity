@@ -161,7 +161,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXAMPLE ACTIVITY TEXT TEST TEST TEST TEST TEST
+  m_text: THIS IS A PLACEHOLDER TEXT. IF YOU ARE SEEING THIS, IT MEANS THE API FETCH
+    FAILED. PLEASE CHECK YOUR INTERNET CONNECTION.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.3
+  m_fontSize: 26.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -255,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430, y: -1117.6031}
+  m_AnchoredPosition: {x: 430, y: -1120}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &61666802
@@ -493,7 +494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430, y: -842}
+  m_AnchoredPosition: {x: 430, y: -840}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &257549745
@@ -516,7 +517,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXAMPLE ACTIVITY TEXT TEST TEST TEST TEST TEST
+  m_text: THIS IS A PLACEHOLDER TEXT. IF YOU ARE SEEING THIS, IT MEANS THE API FETCH
+    FAILED. PLEASE CHECK YOUR INTERNET CONNECTION.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -543,7 +545,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.3
+  m_fontSize: 26.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -630,8 +632,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -808.00006}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchoredPosition: {x: 0, y: -820}
+  m_SizeDelta: {x: 600, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381401574
 MonoBehaviour:
@@ -851,7 +853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -1117.6031}
+  m_AnchoredPosition: {x: 90, y: -1120}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &480801781
@@ -1026,7 +1028,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXAMPLE ACTIVITY TEXT TEST TEST TEST TEST TEST
+  m_text: THIS IS A PLACEHOLDER TEXT. IF YOU ARE SEEING THIS, IT MEANS THE API FETCH
+    FAILED. PLEASE CHECK YOUR INTERNET CONNECTION.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1053,7 +1056,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.3
+  m_fontSize: 26.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1120,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430, y: -976}
+  m_AnchoredPosition: {x: 430, y: -980}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &687382772
@@ -1285,11 +1288,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1072291871}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -1499.5059}
+  m_AnchoredPosition: {x: 90, y: -1400}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &718963977
@@ -1421,11 +1424,11 @@ RectTransform:
   m_Children:
   - {fileID: 1141127120}
   m_Father: {fileID: 1072291871}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 430, y: -1374}
+  m_AnchoredPosition: {x: 430, y: -1540}
   m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &726800061
@@ -1448,7 +1451,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXAMPLE ACTIVITY TEXT TEST TEST TEST TEST TEST
+  m_text: THIS IS A PLACEHOLDER TEXT. IF YOU ARE SEEING THIS, IT MEANS THE API FETCH
+    FAILED. PLEASE CHECK YOUR INTERNET CONNECTION.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1475,7 +1479,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.3
+  m_fontSize: 26.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1823,13 +1827,13 @@ RectTransform:
   m_Children:
   - {fileID: 687382773}
   m_Father: {fileID: 1072291871}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: -598}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 430, y: -1420}
   m_SizeDelta: {x: 600, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &966605312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,7 +2035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -842}
+  m_AnchoredPosition: {x: 90, y: -840}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1017280302
@@ -2235,11 +2239,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1072291871}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -1374.0001}
+  m_AnchoredPosition: {x: 90, y: -1540}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1053292227
@@ -2492,10 +2496,10 @@ RectTransform:
   - {fileID: 41946402}
   - {fileID: 1525915061}
   - {fileID: 1536373572}
-  - {fileID: 1053292226}
-  - {fileID: 726800060}
   - {fileID: 718963976}
   - {fileID: 966605311}
+  - {fileID: 1053292226}
+  - {fileID: 726800060}
   - {fileID: 381401573}
   - {fileID: 1027535049}
   m_Father: {fileID: 0}
@@ -3012,7 +3016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -1241.506}
+  m_AnchoredPosition: {x: 90, y: -1260}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1525915062
@@ -3147,11 +3151,11 @@ RectTransform:
   m_Father: {fileID: 1072291871}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: -340.00003}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 430, y: -1280}
   m_SizeDelta: {x: 600, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1536373573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3647,7 +3651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -976.00006}
+  m_AnchoredPosition: {x: 90, y: -980}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2119763081
