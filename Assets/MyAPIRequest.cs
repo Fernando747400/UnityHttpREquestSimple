@@ -12,8 +12,7 @@ public class MyAPIRequest : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _OutputText;
     [SerializeField] private string _URLToRequest;
     [SerializeField] ActivityShower _activityShower;
-
-    private List<string[,]> activityList = new List<string[,]>();
+    [SerializeField] bool ImageRequest;
 
     public void Start()
     {
@@ -57,7 +56,30 @@ public class MyAPIRequest : MonoBehaviour
                         Debug.Log(root[key]);
                     }
 
-                    _activityShower.DisplayActivity(root);
+                    if (!ImageRequest)
+                    {
+                        _activityShower.DisplayActivity(root);
+                    } else
+                    {
+                        foreach(var key in root.Keys)
+                        {
+                            if (key == "message")
+                            {
+                                UnityWebRequest doggoRequest = UnityWebRequestTexture.GetTexture(root[key]);
+                                yield return doggoRequest.SendWebRequest();
+                                if (doggoRequest.result == UnityWebRequest.Result.Success)
+                                {
+                                    Texture doggoTexture = ((DownloadHandlerTexture)doggoRequest.downloadHandler).texture;
+                                    _activityShower.DisplayImage(doggoTexture);
+                                }
+                                else
+                                {
+                                    Debug.Log("Can't get doggo image");
+                                }
+                            }
+                        }
+                    }
+                    
                     yield return root;
                     break;
             }

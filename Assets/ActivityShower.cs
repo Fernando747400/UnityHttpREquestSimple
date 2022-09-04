@@ -22,6 +22,8 @@ public class ActivityShower : MonoBehaviour
     [SerializeField] private Slider _sliderAccess;
     [SerializeField] private Image _sliderAccessImage;
     [SerializeField] private TextMeshProUGUI _sliderAccessText;
+    [Header("Doggo Image")]
+    [SerializeField] private RawImage _doggoImage;
 
     public void DisplayActivity(JSONNode root)
     {
@@ -31,6 +33,11 @@ public class ActivityShower : MonoBehaviour
             Debug.Log(root[key]);
             SortData(key, root[key]);
         }
+    }
+
+    public void DisplayImage(Texture doggoImage)
+    {
+        _doggoImage.texture = doggoImage;
     }
 
     private void SortData(string key, string value)
@@ -71,6 +78,9 @@ public class ActivityShower : MonoBehaviour
                     _sliderAccessImage.color = _gradient.Evaluate(float.Parse(value));
                     _sliderAccessText.text = "";
                 } 
+                break;
+
+            case "message":
                 break;
         }
     }
