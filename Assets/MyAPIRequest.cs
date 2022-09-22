@@ -11,8 +11,6 @@ public class MyAPIRequest : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private TextMeshProUGUI _OutputText;
     [SerializeField] private string _URLToRequest;
-    [SerializeField] ActivityShower _activityShower;
-    [SerializeField] bool ImageRequest;
 
     public void Start()
     {
@@ -40,12 +38,14 @@ public class MyAPIRequest : MonoBehaviour
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + webRequest.error);
                     break;
+
                 case UnityWebRequest.Result.ProtocolError:
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
+
                 case UnityWebRequest.Result.Success:
                     _OutputText.text = webRequest.downloadHandler.text;
-                    //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     JSONNode root = JSONNode.Parse(webRequest.downloadHandler.text);
                     Debug.Log("EL root es el siguiente");
                     Debug.Log(root);
@@ -54,30 +54,6 @@ public class MyAPIRequest : MonoBehaviour
                     {
                         Debug.Log(key);
                         Debug.Log(root[key]);
-                    }
-
-                    if (!ImageRequest)
-                    {
-                        _activityShower.DisplayActivity(root);
-                    } else
-                    {
-                        foreach(var key in root.Keys)
-                        {
-                            if (key == "message")
-                            {
-                                UnityWebRequest doggoRequest = UnityWebRequestTexture.GetTexture(root[key]);
-                                yield return doggoRequest.SendWebRequest();
-                                if (doggoRequest.result == UnityWebRequest.Result.Success)
-                                {
-                                    Texture doggoTexture = ((DownloadHandlerTexture)doggoRequest.downloadHandler).texture;
-                                    _activityShower.DisplayImage(doggoTexture);
-                                }
-                                else
-                                {
-                                    Debug.Log("Can't get doggo image");
-                                }
-                            }
-                        }
                     }
                     
                     yield return root;

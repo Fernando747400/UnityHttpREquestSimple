@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _OutputText: {fileID: 1902708623}
-  _URLToRequest: 
+  _URLToRequest: http://localhost:7227/api/todoitems
 --- !u!4 &740989732
 Transform:
   m_ObjectHideFlags: 0
