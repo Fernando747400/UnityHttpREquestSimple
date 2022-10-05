@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _OutputText: {fileID: 1902708623}
-  _URLToRequest: http://localhost:7227/api/todoitems
+  _URLToRequest: http://localhost:7227/api/movieitems
   RequestTypeOf: 1
 --- !u!4 &740989732
 Transform:
@@ -557,9 +557,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _APIRequester: {fileID: 740989731}
   _RequestType: 0
-  _modelID: 1
-  _modelName: Updated
-  _modelIsComplete: 1
+  _id: 0
+  _name: Iron Man
+  _year: 2008
+  _director: Jon Favreau
+  _leadActor: Robert Downey Jr.
+  _supportActor: Jeff Bridges
+  _criticScore: 94
+  _audienceScore: 91
+  _synopsis: Tony Stark is a brilliant weapons inventor who is kidnapped overseas.
+    His captors are terrorists who force him to build a destructive machine, but
+    Tony builds himself a suit of armor to fight them and escape.
+  _budget: 140000000
+  _revenue: 585000000
 --- !u!1 &1072317607
 GameObject:
   m_ObjectHideFlags: 0
