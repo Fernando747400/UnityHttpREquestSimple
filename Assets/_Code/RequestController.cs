@@ -5,6 +5,7 @@ using UnityEngine;
 public class RequestController : MonoBehaviour
 {
     [Header("Dependencies")]
+    [SerializeField] private MovieViewHandler _movieViewHandler;
     [SerializeField] private MyAPIRequest _APIRequester;
     [SerializeField] private MyAPIRequest.RequestType _RequestType;
 
@@ -23,10 +24,12 @@ public class RequestController : MonoBehaviour
     [SerializeField] private double _revenue;
 
     private MoviesItemModel _myModel;
+    private MoviesItemModel _responseModel;
 
     private void Start()
     {
         Prepare();
+        _APIRequester.GotResponseEvent += BuildModelFromJson;
     }
 
     public void SendRequest()
@@ -45,5 +48,16 @@ public class RequestController : MonoBehaviour
     private void Prepare()
     {
         BuildModel();
+    }
+
+    private void BuildModelFromJson()
+    {
+        _responseModel = JsonUtility.FromJson<MoviesItemModel>(_APIRequester.ResponseData);
+        SendToView();
+    }
+
+    private void SendToView()
+    {
+        _movieViewHandler.UpdateView(_responseModel);
     }
 }

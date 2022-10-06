@@ -12,6 +12,9 @@ public class MyAPIRequest : MonoBehaviour
     [SerializeField] private string _URLToRequest;
     
     [HideInInspector] public RequestType RequestTypeOf;
+    [HideInInspector] public JSONNode ResponseData;
+
+    public event Action GotResponseEvent;
 
     public enum RequestType
     {
@@ -49,7 +52,7 @@ public class MyAPIRequest : MonoBehaviour
     {
         UnityWebRequest getRequest = UnityWebRequest.Get(uri);
         yield return getRequest.SendWebRequest();
-        JSONNode root = HandleResult(getRequest);
+        ResponseData = HandleResult(getRequest);
         getRequest.Dispose();
     }
 
@@ -60,7 +63,7 @@ public class MyAPIRequest : MonoBehaviour
         postRequest.method = "POST";
         postRequest.SetRequestHeader("Content-Type", "application/json");
         yield return postRequest.SendWebRequest();
-        HandleResult(postRequest);
+        ResponseData = HandleResult(postRequest);
         postRequest.Dispose();
     }
 
@@ -72,7 +75,7 @@ public class MyAPIRequest : MonoBehaviour
         UnityWebRequest putRequest = UnityWebRequest.Put(uri +"/"+ id, json);
         putRequest.SetRequestHeader("Content-Type", "application/json");
         yield return putRequest.SendWebRequest();
-        HandleResult(putRequest);
+        ResponseData = HandleResult(putRequest);
         putRequest.Dispose();
     }
 
@@ -83,7 +86,7 @@ public class MyAPIRequest : MonoBehaviour
         UnityWebRequest deleteRequest = UnityWebRequest.Delete(uri + "/" + id);
         deleteRequest.SetRequestHeader("Content-Type", "application/json");
         yield return deleteRequest.SendWebRequest();
-        HandleResult(deleteRequest);
+        ResponseData = HandleResult(deleteRequest);
         deleteRequest.Dispose();
     }
 
@@ -119,6 +122,7 @@ public class MyAPIRequest : MonoBehaviour
                 break;
                
         }
+        GotResponseEvent?.Invoke();
         return root;
     }
 
