@@ -53,7 +53,7 @@ public class RequestController : MonoBehaviour
 
     private void BuildModelFromJson()
     {
-        _responseModel = JsonUtility.FromJson<MoviesItemModel>(_APIRequester.ResponseData[0]);
+        _responseModel = _APIRequester.ResponseData[0];
         SendToView();
     }
 

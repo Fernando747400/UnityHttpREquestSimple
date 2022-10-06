@@ -31,7 +31,7 @@ public class MovieViewHandler : MonoBehaviour
         _criticScoreImage.fillAmount = Mathf.InverseLerp(0, 100, model.CriticScore); 
         _audienceScoreImage.fillAmount = Mathf.InverseLerp(0, 100, model.AudienceScore);
         _synopsisText.text = model.Synopsis;
-        _budgetText.text = model.Budget.ToString();
-        _revenueText.text = model.Revenue.ToString();
+        _budgetText.text = model.Budget.ToString("c");
+        _revenueText.text = model.Revenue.ToString("c");
     }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 using SimpleJSON;
 using TMPro;
 using System;
+using System.Collections.Generic;
 
 public class MyAPIRequest : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MyAPIRequest : MonoBehaviour
     [SerializeField] private string _URLToRequest;
     
     [HideInInspector] public RequestType RequestTypeOf;
-    [HideInInspector] public JSONNode ResponseData;
+    [HideInInspector] public List<MoviesItemModel> ResponseData;
 
     public event Action GotResponseEvent;
 
@@ -52,7 +53,7 @@ public class MyAPIRequest : MonoBehaviour
     {
         UnityWebRequest getRequest = UnityWebRequest.Get(uri);
         yield return getRequest.SendWebRequest();
-        ResponseData = HandleResult(getRequest);
+        HandleResult(getRequest);
         getRequest.Dispose();
     }
 
@@ -63,7 +64,7 @@ public class MyAPIRequest : MonoBehaviour
         postRequest.method = "POST";
         postRequest.SetRequestHeader("Content-Type", "application/json");
         yield return postRequest.SendWebRequest();
-        ResponseData = HandleResult(postRequest);
+        HandleResult(postRequest);
         postRequest.Dispose();
     }
 
@@ -75,7 +76,7 @@ public class MyAPIRequest : MonoBehaviour
         UnityWebRequest putRequest = UnityWebRequest.Put(uri +"/"+ id, json);
         putRequest.SetRequestHeader("Content-Type", "application/json");
         yield return putRequest.SendWebRequest();
-        ResponseData = HandleResult(putRequest);
+        HandleResult(putRequest);
         putRequest.Dispose();
     }
 
@@ -86,7 +87,7 @@ public class MyAPIRequest : MonoBehaviour
         UnityWebRequest deleteRequest = UnityWebRequest.Delete(uri + "/" + id);
         deleteRequest.SetRequestHeader("Content-Type", "application/json");
         yield return deleteRequest.SendWebRequest();
-        ResponseData = HandleResult(deleteRequest);
+        HandleResult(deleteRequest);
         deleteRequest.Dispose();
     }
 
@@ -110,13 +111,14 @@ public class MyAPIRequest : MonoBehaviour
                     _OutputText.text = webRequest.downloadHandler.text;
                     Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
                     root = JSONNode.Parse(webRequest.downloadHandler.text);
-
-                    Debug.Log("EL root es el siguiente " + root);
-
-                    foreach (var key in root.Keys)
+                    JSONArray jsonArray = root.AsArray;
+                    Debug.Log("EL root es el siguiente: ");
+                    Debug.Log(root);
+                    ResponseData.Clear();
+                    for(int i = 0; i < jsonArray.Count; i++)
                     {
-                        Debug.Log(key);
-                        Debug.Log(root[key]);
+                        Debug.Log(jsonArray[i]["name"]);
+                        ResponseData.Add(ObjectBuilder.BuildModel(jsonArray[i]));
                     }
                 }
                 break;

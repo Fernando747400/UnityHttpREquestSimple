@@ -15,6 +15,10 @@ public class MoviesItemModel
     public double Budget;
     public double Revenue;
 
+    public MoviesItemModel()
+    {
+
+    }
 
     public MoviesItemModel(string name, int year, string director, string leadActor, string supportActor, float criticScore, float audienceScore, string synopsis, double budget, double revenue)
     {
