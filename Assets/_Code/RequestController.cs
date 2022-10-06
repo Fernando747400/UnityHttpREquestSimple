@@ -6,6 +6,7 @@ public class RequestController : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private MovieViewHandler _movieViewHandler;
+    [SerializeField] private MovieSenderHandler _movieSenderHandler;
     [SerializeField] private MyAPIRequest _APIRequester;
     [SerializeField] private MyAPIRequest.RequestType _RequestType;
 
@@ -52,12 +53,24 @@ public class RequestController : MonoBehaviour
 
     private void BuildModelFromJson()
     {
-        _responseModel = JsonUtility.FromJson<MoviesItemModel>(_APIRequester.ResponseData);
+        _responseModel = JsonUtility.FromJson<MoviesItemModel>(_APIRequester.ResponseData[0]);
         SendToView();
     }
 
     private void SendToView()
     {
         _movieViewHandler.UpdateView(_responseModel);
+    }
+
+    private void GetFirstObjectFromJason()
+    {
+        
+    }
+
+    private void SendPost()
+    {
+        _movieSenderHandler.BuildModelFromInput();
+        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;
+        _APIRequester.SendRequest(_movieSenderHandler.MyModel, _movieSenderHandler.MyModel.Id);
     }
 }
