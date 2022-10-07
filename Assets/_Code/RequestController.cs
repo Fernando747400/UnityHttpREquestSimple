@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class RequestController : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class RequestController : MonoBehaviour
     [SerializeField] private MovieSenderHandler _movieSenderHandler;
     [SerializeField] private MyAPIRequest _APIRequester;
     [SerializeField] private MyAPIRequest.RequestType _RequestType;
+    [SerializeField] private GameObject _nextButton;
+    [SerializeField] private GameObject _previousButton;
+    [SerializeField] private TMP_Dropdown  _dropDownBox;
 
     [Header("Settings")]
     [SerializeField] private int _id;
@@ -26,11 +31,16 @@ public class RequestController : MonoBehaviour
 
     private MoviesItemModel _myModel;
     private MoviesItemModel _responseModel;
+    private int _index;
 
     private void Start()
     {
         Prepare();
+        SendRequest();
         _APIRequester.GotResponseEvent += BuildModelFromJson;
+        _APIRequester.GotResponseEvent += PoblateDropDown;
+        _APIRequester.GotResponseEvent += HasNext;
+        _APIRequester.GotResponseEvent += HasPrevious;
     }
 
     public void SendRequest()
@@ -53,8 +63,37 @@ public class RequestController : MonoBehaviour
 
     private void BuildModelFromJson()
     {
-        _responseModel = _APIRequester.ResponseData[0];
+        _index = 0;
+        _responseModel = _APIRequester.ResponseData[_index];
         SendToView();
+    }
+    
+    private void SendPost()
+    {
+        _movieSenderHandler.BuildModelFromInput();
+        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;
+        _APIRequester.SendRequest(_movieSenderHandler.MyModel, _movieSenderHandler.MyModel.Id);
+    }
+
+    #region UI Methods
+
+    private void PoblateDropDown()
+    {
+        _dropDownBox.options.Clear();
+        foreach (var item in _APIRequester.ResponseData)
+        {
+            _dropDownBox.options.Add(new TMP_Dropdown.OptionData() { text = item.Name });
+        }
+        _dropDownBox.RefreshShownValue();
+    }
+
+    public void DropDownValueChanged(int value)
+    {
+        _index = value;
+        _responseModel = _APIRequester.ResponseData[_index];
+        SendToView();
+        HasNext();
+        HasPrevious();
     }
 
     private void SendToView()
@@ -62,15 +101,62 @@ public class RequestController : MonoBehaviour
         _movieViewHandler.UpdateView(_responseModel);
     }
 
-    private void GetFirstObjectFromJason()
+    public void NextButtonClick()
     {
-        
+        _index++;
+        if (_index < _APIRequester.ResponseData.Count)
+        {
+            _responseModel = _APIRequester.ResponseData[_index];
+            SendToView();
+            HasNext();
+            HasPrevious();
+            _dropDownBox.value = _index;
+        }
+        else
+        {
+            _index = _APIRequester.ResponseData.Count - 1;
+        }
     }
 
-    private void SendPost()
+    public void PreviousButtonClick()
     {
-        _movieSenderHandler.BuildModelFromInput();
-        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;
-        _APIRequester.SendRequest(_movieSenderHandler.MyModel, _movieSenderHandler.MyModel.Id);
+        _index--;
+        if (_index >= 0)
+        {
+            _responseModel = _APIRequester.ResponseData[_index];
+            SendToView();
+            HasNext();
+            HasPrevious();
+            _dropDownBox.value = _index;
+        }
+        else
+        {
+            _index = 0;
+        }
     }
+    
+    private void HasNext()
+    {
+        if (_index < _APIRequester.ResponseData.Count - 1)
+        {
+            _nextButton.SetActive(true);
+        }
+        else
+        {
+            _nextButton.SetActive(false);
+        }
+    }
+
+    private void HasPrevious()
+    {
+        if (_index > 0)
+        {
+            _previousButton.SetActive(true);
+        }
+        else
+        {
+            _previousButton.SetActive(false);
+        }
+    }
+    #endregion
 }

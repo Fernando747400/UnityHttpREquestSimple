@@ -108,12 +108,12 @@ public class MyAPIRequest : MonoBehaviour
             case UnityWebRequest.Result.Success:
                 if (webRequest.downloadHandler != null)
                 {
-                    _OutputText.text = webRequest.downloadHandler.text;
+                    //_OutputText.text = webRequest.downloadHandler.text;
                     Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
                     root = JSONNode.Parse(webRequest.downloadHandler.text);
                     JSONArray jsonArray = root.AsArray;
-                    Debug.Log("EL root es el siguiente: ");
-                    Debug.Log(root);
+                    //Debug.Log("EL root es el siguiente: ");
+                    //Debug.Log(root);
                     ResponseData.Clear();
                     for(int i = 0; i < jsonArray.Count; i++)
                     {
