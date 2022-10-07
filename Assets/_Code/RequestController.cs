@@ -36,7 +36,7 @@ public class RequestController : MonoBehaviour
     private void Start()
     {
         Prepare();
-        SendRequest();
+        GetRequest();
         _APIRequester.GotResponseEvent += BuildModelFromJson;
         _APIRequester.GotResponseEvent += PoblateDropDown;
         _APIRequester.GotResponseEvent += HasNext;
@@ -68,7 +68,13 @@ public class RequestController : MonoBehaviour
         SendToView();
     }
     
-    public void SendPost()
+    public void GetRequest()
+    {
+        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.GET;
+        _APIRequester.SendRequest(new MoviesItemModel(), 0);
+    }
+    
+    public void PostRequest()
     {
         _movieSenderHandler.BuildModelFromInput();
         _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;

@@ -16,6 +16,8 @@ public class MyAPIRequest : MonoBehaviour
     [HideInInspector] public List<MoviesItemModel> ResponseData;
 
     public event Action GotResponseEvent;
+    public event Action SuccesResponseEvent;
+    public event Action<string> FailedResponseEvent;
 
     public enum RequestType
     {
@@ -98,15 +100,18 @@ public class MyAPIRequest : MonoBehaviour
         {
             case UnityWebRequest.Result.ConnectionError:
             case UnityWebRequest.Result.DataProcessingError:
+                FailedResponseEvent?.Invoke(webRequest.error.ToString());
                 Debug.LogError(": Error: " + webRequest.error);
                 break;
 
             case UnityWebRequest.Result.ProtocolError:
+                FailedResponseEvent?.Invoke(webRequest.error.ToString());
                 Debug.LogError(": HTTP Error: " + webRequest.error);
                 break;
 
             case UnityWebRequest.Result.Success:
                 Debug.Log("Succes on request");
+                SuccesResponseEvent?.Invoke();
                 if (webRequest.downloadHandler != null && RequestTypeOf == RequestType.GET)
                 {
                     //_OutputText.text = webRequest.downloadHandler.text;
