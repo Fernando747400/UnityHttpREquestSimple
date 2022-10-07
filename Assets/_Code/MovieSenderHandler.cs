@@ -23,7 +23,14 @@ public class MovieSenderHandler : MonoBehaviour
 
     public void BuildModelFromInput()
     {
-        MyModel.Id = int.Parse(_IDText.GetComponent<TMP_InputField>().text);
+        if (_IDText.GetComponent<TMP_InputField>().text != "")
+        {
+            MyModel.Id = int.Parse(_IDText.GetComponent<TMP_InputField>().text);
+        }
+        else
+        {
+            MyModel.Id = 0;
+        }
         MyModel.Name = _nameText.GetComponent<TMP_InputField>().text;
         MyModel.Year = int.Parse(_yearText.GetComponent<TMP_InputField>().text);
         MyModel.Director = _directorText.GetComponent<TMP_InputField>().text;

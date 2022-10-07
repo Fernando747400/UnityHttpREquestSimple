@@ -106,6 +106,7 @@ public class MyAPIRequest : MonoBehaviour
                 break;
 
             case UnityWebRequest.Result.Success:
+                Debug.Log("Succes on request");
                 if (webRequest.downloadHandler != null && RequestTypeOf == RequestType.GET)
                 {
                     //_OutputText.text = webRequest.downloadHandler.text;
