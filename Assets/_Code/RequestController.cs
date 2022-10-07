@@ -43,6 +43,12 @@ public class RequestController : MonoBehaviour
         _APIRequester.GotResponseEvent += HasPrevious;
     }
 
+    public void RefreshView()
+    {
+        Prepare();
+        GetRequest();
+    }
+
     public void SendRequest()
     {
         BuildModel();
@@ -79,6 +85,19 @@ public class RequestController : MonoBehaviour
         _movieSenderHandler.BuildModelFromInput();
         _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;
         _APIRequester.SendRequest(_movieSenderHandler.MyModel, _movieSenderHandler.MyModel.Id);
+    }
+
+    public void PutRequest()
+    {
+        _movieSenderHandler.BuildModelFromInput();
+        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.PUT;
+        _APIRequester.SendRequest(_movieSenderHandler.MyModel, _movieSenderHandler.MyModel.Id);
+    }
+    
+    public void DeleteRequest()
+    {
+        _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.DELETE;
+        _APIRequester.SendRequest(new MoviesItemModel(), _movieSenderHandler.GetID());     
     }
 
     #region UI Methods

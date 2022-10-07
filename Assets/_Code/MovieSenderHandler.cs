@@ -42,4 +42,16 @@ public class MovieSenderHandler : MonoBehaviour
         MyModel.Budget = int.Parse(_budgetText.GetComponent<TMP_InputField>().text);
         MyModel.Revenue = int.Parse(_revenueText.GetComponent<TMP_InputField>().text);
     }
+    
+    public int GetID()
+    {
+        if (_IDText.GetComponent<TMP_InputField>().text != "")
+        {
+            return int.Parse(_IDText.GetComponent<TMP_InputField>().text);
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
