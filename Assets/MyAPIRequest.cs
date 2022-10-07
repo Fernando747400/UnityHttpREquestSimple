@@ -106,7 +106,7 @@ public class MyAPIRequest : MonoBehaviour
                 break;
 
             case UnityWebRequest.Result.Success:
-                if (webRequest.downloadHandler != null)
+                if (webRequest.downloadHandler != null && RequestTypeOf == RequestType.GET)
                 {
                     //_OutputText.text = webRequest.downloadHandler.text;
                     Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
@@ -120,11 +120,11 @@ public class MyAPIRequest : MonoBehaviour
                         Debug.Log(jsonArray[i]["name"]);
                         ResponseData.Add(ObjectBuilder.BuildModel(jsonArray[i]));
                     }
+                    GotResponseEvent?.Invoke();
                 }
                 break;
                
         }
-        GotResponseEvent?.Invoke();
         return root;
     }
 

@@ -68,7 +68,7 @@ public class RequestController : MonoBehaviour
         SendToView();
     }
     
-    private void SendPost()
+    public void SendPost()
     {
         _movieSenderHandler.BuildModelFromInput();
         _APIRequester.RequestTypeOf = MyAPIRequest.RequestType.POST;
